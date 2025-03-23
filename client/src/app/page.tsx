@@ -13,7 +13,7 @@ export default function Quotes() {
   const [symbol, setSymbol] = useState('')
   const [getQuoteBtnClicked, setGetQuoteBtnClicked] = useState(false)
 
-  const { data: quote, error, isError, isLoading, isFetched } = useQuery<{ price: number, symbol: string }>({
+  const { data: quote, error, isError, isLoading, isFetched, dataUpdatedAt } = useQuery<{ price: number, symbol: string }>({
     queryKey: ['todos', symbol],
     queryFn: async (): Promise<{ price: number, symbol: string }> => {
       const response = await fetch(`${baseUrl}/api/quote/${symbol}`)
@@ -57,7 +57,7 @@ export default function Quotes() {
               {isFetched && <div>Price: {(quote?.price || 0).toFixed(2)}</div>}
             </div>
             <div className="min-h-6">
-              {isFetched && <div>{formatNow()}</div>}
+              {isFetched && <div>{formatNow(dataUpdatedAt)}</div>}
             </div>
 
             <div className="min-h-6 text-red-500">
@@ -71,8 +71,8 @@ export default function Quotes() {
 }
 
 
-function formatNow() {
-  const date = new Date();
+function formatNow(time: number) {
+  const date = new Date(time);
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
