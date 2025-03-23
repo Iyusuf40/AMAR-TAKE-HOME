@@ -68,5 +68,5 @@ This is the backend server application for a simple real-time quote display, bui
     *   Description: Fetches the current quote for the given symbol.
     *   Parameters:
         *   `symbol` (string, required): The financial symbol (e.g., AAPL, GOOGL, BTCUSD).
-    *   Response ({ price: number, symbol: string }):
+    *   Response `{ price: number, symbol: string }`
         
