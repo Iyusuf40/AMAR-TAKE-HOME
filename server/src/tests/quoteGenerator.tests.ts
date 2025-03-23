@@ -31,6 +31,14 @@ describe('QoutesGenerator', () => {
       done();
     }, 1500); // Wait for more than the update interval
   }).timeout(2000);
+
+  it('should throw an error for an invalid symbol', () => {
+    const symbol = 'INVALID';
+    assert.throws(() => {
+      qoutesGenerator.getPiceForSymbol(symbol);
+    }, Error);
+  });
+
 });
 
 describe('isValidSymbol', () => {

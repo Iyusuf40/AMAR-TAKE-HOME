@@ -3,7 +3,7 @@
 import CustomSelect from "@/components/ui/select";
 import Spinner from "@/components/ui/spinner";
 import { Query, useQuery } from "@tanstack/react-query";
-import { use, useState } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export default function Quotes() {

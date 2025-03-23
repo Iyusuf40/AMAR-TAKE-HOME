@@ -36,6 +36,9 @@ class QoutesGenerator {
   }
 
   getPiceForSymbol(symbol: string): number {
+    if (!isValidSymbol(symbol)) {
+      throw new Error('Invalid symbol, please use one of the following: ' + VALID_SYMBOLS.join(', '))
+    }
     return this.financialSymbolsToPriceMap[symbol.toUpperCase()]
   }
 }
